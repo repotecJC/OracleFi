@@ -26,11 +26,11 @@ export default function RootLayout({
           {/* Header */}
           <header className="sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-primary flex flex-shrink-0 items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">O</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-md sm:rounded-lg bg-primary flex flex-shrink-0 items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-base sm:text-lg">O</span>
                 </div>
-                <h1 className="hidden sm:block text-xl font-bold tracking-tight">OracleFi</h1>
+                <h1 className="text-lg sm:text-xl font-bold tracking-tight">OracleFi</h1>
               </div>
               <div className="flex items-center gap-1 sm:gap-2">
                 <FaucetButton />

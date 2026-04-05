@@ -19,15 +19,17 @@ export default function Home() {
       {/* 原有內容 */}
       <div className="relative z-10 container mx-auto p-6">
         <div className="max-w-6xl mx-auto">
-          <AdminLinkButton />
-          
-          <div className="text-center mb-8 mt-4">
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          <div className="text-center mb-8 mt-4 sm:mt-12">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent min-h-[1.5em] flex justify-center items-center">
               <TypewriterText text={t("home.title")} speed={60} />
             </h1>
-            <p className="text-xl text-muted-foreground h-14">
+            <p className="text-lg sm:text-xl text-muted-foreground min-h-[4em] sm:min-h-[3em] max-w-2xl mx-auto">
               <TypewriterText text={t("home.subtitle")} delay={1000} speed={25} />
             </p>
+            
+            <div className="flex justify-center mt-6">
+              <AdminLinkButton />
+            </div>
           </div>
           
           <StatsBar />

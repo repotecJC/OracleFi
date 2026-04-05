@@ -16,9 +16,14 @@ export function LanguageToggle() {
       suppressHydrationWarning
     >
       <Globe className="h-4 w-4 text-primary flex-shrink-0" />
-      <span className={language === 'en' ? 'font-bold text-primary' : 'text-muted-foreground'}>EN</span>
-      <span className="text-muted-foreground">|</span>
-      <span className={language === 'zh' ? 'font-bold text-primary' : 'text-muted-foreground'}>中文</span>
+      <div className="hidden sm:inline-flex items-center gap-1">
+        <span className={language === 'en' ? 'font-bold text-primary' : 'text-muted-foreground'}>EN</span>
+        <span className="text-muted-foreground">|</span>
+        <span className={language === 'zh' ? 'font-bold text-primary' : 'text-muted-foreground'}>中文</span>
+      </div>
+      <span className="inline sm:hidden font-bold text-primary text-xs uppercase">
+        {language}
+      </span>
     </Button>
   );
 }
