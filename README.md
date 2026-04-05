@@ -91,36 +91,36 @@ APY Rate = f(Token Price)
 ## 🏗️ Technical Architecture
 
 ### Smart Contract Stack
+
 ┌─────────────────────────────────────────────────┐
-│ Frontend DApp                                   │
-│ Next.js 14 + TypeScript                         │
+│ Frontend DApp │
+│ Next.js 14 + TypeScript │
 └────────────┬────────────────────────────────────┘
 │
 ▼
 ┌─────────────────────────────────────────────────┐
-│ Sui Blockchain                                  │
-│                                                 │
-│ ┌──────────────┐                                │
-│ │ oracle_coin │ ◄─── OC Token (9 decimals)      │
-│ └──────┬───────┘                                │
-│ │                                               │
-│ ▼                                               │
-│ ┌──────────────┐                                │
-│ │price_oracle │ ◄─── Price feed management      │
-│ └──────┬───────┘                                │
-│ │                                               │
-│ ▼                                               │
-│ ┌───────────────────┐                           │
-│ │multi_oracle_reg │ ◄─── Registry + DOF         │
-│ └──────┬────────────┘                           │
-│ │                                               │
-│ ▼                                               │
-│ ┌──────────────┐                                │
-│ │staking_pool │ ◄─── Core staking logic         │
-│ └──────────────┘                                │
-│                                                 │
+│ Sui Blockchain │
+│ │
+│ ┌──────────────┐ │
+│ │ oracle_coin │ ◄─── OC Token (9 decimals) │
+│ └──────┬───────┘ │
+│ │ │
+│ ▼ │
+│ ┌──────────────┐ │
+│ │price_oracle │ ◄─── Price feed management │
+│ └──────┬───────┘ │
+│ │ │
+│ ▼ │
+│ ┌───────────────────┐ │
+│ │multi_oracle_reg │ ◄─── Registry + DOF │
+│ └──────┬────────────┘ │
+│ │ │
+│ ▼ │
+│ ┌──────────────┐ │
+│ │staking_pool │ ◄─── Core staking logic │
+│ └──────────────┘ │
+│ │
 └─────────────────────────────────────────────────┘
-
 
 ### Technology Stack
 
@@ -138,6 +138,7 @@ APY Rate = f(Token Price)
 | **Deployment**           | Vercel                                                                     |
 
 ### On-Chain Deployment
+
 Network: Sui Testnet
 Chain ID: 4c78adac
 
@@ -147,7 +148,6 @@ Latest Package ID: 0xe7673dda5fed10f5d52a8f960a8f8d48a762685228dbf1e74c7c81ee926
 Pool ID: 0xda1b01ce2583ba48c59621135e7784ca2fa53ec51f581f7967c3760e7037f7a6
 Registry ID: 0x359ec6fb71edfa7bdf3fcfe348633f823753b722e03a4fa2d6df758bf246c0f4
 Faucet State: 0xbd1c5cf27b4b2f40ec3743d567a6f428eb09e186a0eadfd87fdb24f32c8995f3
-
 
 ---
 
