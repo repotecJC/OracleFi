@@ -65,11 +65,16 @@ export function FaucetButton() {
     <Button 
       onClick={handleFaucet}
       variant="outline"
-      className="gap-2 bg-blue-600/10 hover:bg-blue-600/20 border-blue-600/50"
+      className="gap-1 sm:gap-2 bg-blue-600/10 hover:bg-blue-600/20 border-blue-600/50 px-2 sm:px-4"
       disabled={!account || isPending}
     >
-      <Droplets className="h-4 w-4 text-blue-400" />
-      {isPending ? t('faucet.claiming') : t('faucet.button', { amount: FAUCET_AMOUNT })}
+      <Droplets className="h-4 w-4 text-blue-400 flex-shrink-0" />
+      <span className="hidden sm:inline">
+        {isPending ? t('faucet.claiming') : t('faucet.button', { amount: FAUCET_AMOUNT })}
+      </span>
+      <span className="inline-block sm:hidden text-xs font-semibold">
+        {isPending ? "..." : `${FAUCET_AMOUNT} OC`}
+      </span>
     </Button>
   );
 }

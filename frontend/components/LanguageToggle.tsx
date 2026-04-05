@@ -12,10 +12,10 @@ export function LanguageToggle() {
       variant="outline" 
       size="sm" 
       onClick={toggleLanguage}
-      className="gap-2 mx-2 font-medium"
+      className="gap-1 sm:gap-2 mx-0 sm:mx-2 px-2 sm:px-3 font-medium"
       suppressHydrationWarning
     >
-      <Globe className="h-4 w-4 text-primary" />
+      <Globe className="h-4 w-4 text-primary flex-shrink-0" />
       <span className={language === 'en' ? 'font-bold text-primary' : 'text-muted-foreground'}>EN</span>
       <span className="text-muted-foreground">|</span>
       <span className={language === 'zh' ? 'font-bold text-primary' : 'text-muted-foreground'}>中文</span>
