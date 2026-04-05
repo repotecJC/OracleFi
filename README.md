@@ -76,7 +76,7 @@ APY Rate = f(Token Price)
 ### 🔐 Three-Tier Permission System
 
 - **SuperAdminCap**: Protocol-level control
-- **AdminCap**: Operational management (NFT-transferable)
+- **AdminCap**: Operational management (Pool Admin / Oracle Admin)
 - **User**: Stake/withdraw/claim permissions
 
 ### 🌍 Internationalization (i18n)
@@ -152,10 +152,12 @@ APY Rate = f(Token Price)
 ```bash
 Network:    Sui Testnet
 Chain ID:   4c78adac
-Package ID: 0x81f67b5daa91e9f49c24753d6423b87a02b449aa0ce1125cba194afd10397b15
-Pool ID:    0xda1b01ce2583ba48c59621135e7784ca2fa53ec51f581f7967c3760e7037f7a6
-Registry:   0x359ec6fb71edfa7bdf3fcfe348633f823753b722e03a4fa2d6df758bf246c0f4
-Version:    1
+Original Package ID: 0x81f67b5daa91e9f49c24753d6423b87a02b449aa0ce1125cba194afd10397b15
+Latest Package ID: 0xe7673dda5fed10f5d52a8f960a8f8d48a762685228dbf1e74c7c81ee92668eb7 (v3)
+
+Pool ID:       0xda1b01ce2583ba48c59621135e7784ca2fa53ec51f581f7967c3760e7037f7a6
+Registry ID:   0x359ec6fb71edfa7bdf3fcfe348633f823753b722e03a4fa2d6df758bf246c0f4
+Faucet State:  0xbd1c5cf27b4b2f40ec3743d567a6f428eb09e186a0eadfd87fdb24f32c8995f3
 ```
 
 ---
@@ -254,6 +256,16 @@ public fun get_pending_rewards(
 public fun get_total_staked(pool: &StakingPool): u64
 ```
 
+#### Public Faucet
+```move
+public entry fun faucet(
+    state: &mut FaucetState,
+    clock: &Clock,
+    ctx: &mut TxContext
+)
+```
+Mint 100 OC test tokens (24-hour cooldown per address).
+
 ### 🔐 Admin Functions
 
 #### Fund Reward Pool
@@ -284,18 +296,20 @@ public fun update_oracle_price(
 
 Update OC/USD price feed (triggers APY recalculation).
 
-#### Mint OC Tokens
+#### Admin Mint OC Tokens
 
 ```move
-public entry fun mint(
-    cap: &mut TreasuryCap<ORACLE_COIN>,
+public entry fun admin_mint(
+    admin_cap: &PoolAdminCap,
+    pool: &StakingPool,
+    faucet_state: &mut FaucetState,
     amount: u64,
     recipient: address,
     ctx: &mut TxContext
 )
 ```
 
-Mint new OC tokens (capped at 1e18).
+Authorized minting of new OC tokens via the FaucetState treasury (requires `PoolAdminCap`).
 
 ---
 
@@ -338,6 +352,8 @@ vercel --prod
 - [x] Core staking mechanism with dynamic APY
 - [x] Multi-oracle registry architecture
 - [x] Admin dashboard (Fund/Mint/Update)
+- [x] Public Faucet with 24-hour cooldown
+- [x] Dynamic admin capability detection (Pool / Oracle separation)
 - [x] Multi-language support (EN/ZH)
 - [x] Responsive UI with real-time data
 
