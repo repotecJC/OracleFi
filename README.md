@@ -257,6 +257,7 @@ public fun get_total_staked(pool: &StakingPool): u64
 ```
 
 #### Public Faucet
+
 ```move
 public entry fun faucet(
     state: &mut FaucetState,
@@ -264,6 +265,7 @@ public entry fun faucet(
     ctx: &mut TxContext
 )
 ```
+
 Mint 100 OC test tokens (24-hour cooldown per address).
 
 ### 🔐 Admin Functions
@@ -429,11 +431,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 📧 Contact & Links
 
-- 🌐 **Live Demo**: [https://your-vercel-url.vercel.app](https://your-vercel-url.vercel.app)
-- 📂 **GitHub**: [https://github.com/repotecJC/OracleFi](https://github.com/repotecJC/OracleFi)
-- 🐦 **Twitter**: [@YourHandle](#)
-- 📧 **Email**: 38872920+repotecJC@users.noreply.github.com
-- 💬 **Discord**: [Join Community](#)
+- 🌐 **Live Demo**: [https://oracle-fi-black.vercel.app/]
+- 📂 **GitHub**: [https://github.com/repotecJC/OracleFi]
+- 🐦 **Twitter**: [@Jose39864093567](#)
+- 💬 **Discord**: [mu.ciaoooo](#)
 
 ---
 
