@@ -92,6 +92,7 @@ APY Rate = f(Token Price)
 
 ### Smart Contract Stack
 
+```
 ┌─────────────────────────────────────────────────┐
 │ Frontend DApp │
 │ Next.js 14 + TypeScript │
@@ -121,6 +122,7 @@ APY Rate = f(Token Price)
 │ └──────────────┘ │
 │ │
 └─────────────────────────────────────────────────┘
+```
 
 ### Technology Stack
 
