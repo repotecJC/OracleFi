@@ -1,7 +1,7 @@
 module oracle_staking_pool::staking_pool;
 
 // ---------- Imports ----------
-use oracle_staking_pool::oracle_coin::ORACLE_COIN;
+use oracle_staking_pool::oracle_coin::{Self, ORACLE_COIN, FaucetState};
 use oracle_staking_pool::multi_oracle_registry::{Self, OracleRegistry};
 use sui::coin::{Self, Coin};
 use sui::balance::{Self, Balance};
@@ -326,6 +326,24 @@ public fun remove_admin(
     assert!(!vector::contains(&pool.denied_admins, &addr), EAlreadyDenied);
     // Add to denylist
     vector::push_back(&mut pool.denied_admins, addr);
+}
+
+/// Admin mint: allows PoolAdminCap holders to mint OC tokens from FaucetState.
+/// This replaces the old `oracle_coin::mint` which required a standalone TreasuryCap.
+public fun admin_mint(
+    admin_cap: &PoolAdminCap,
+    pool: &StakingPool,
+    faucet_state: &mut FaucetState,
+    amount: u64,
+    recipient: address,
+    ctx: &mut TxContext
+) {
+    // Validate admin cap is bound to this pool
+    assert!(admin_cap.pool_id == object::id(pool), EPoolMismatch);
+    // Check caller is not on the denylist
+    assert!(!vector::contains(&pool.denied_admins, &tx_context::sender(ctx)), EAdminDenied);
+    // Delegate to oracle_coin's package-level mint function
+    oracle_coin::mint_from_faucet(faucet_state, amount, recipient, ctx);
 }
 
 // ============================================================================================================
